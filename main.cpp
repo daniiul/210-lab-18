@@ -12,14 +12,14 @@ struct Node
 
 Node* addNodeHead(Node *, double, string);
 Node* addNodeTail(Node *, double, string);
-
+Node* addReview(Node*, int);
 
 int main()
 {
     Node *head = nullptr;
 
     int entry;
-    bool addReview = true;
+    bool review = true;
 
     cout << "Which linked list method should we use?" << endl;
     cout << setw(61) << "[1] New nodes are added at the head of the linked list" << endl;
@@ -27,9 +27,15 @@ int main()
     cout << "       Choice: ";
     cin >> entry;
 
-    while(addReview)
+    while(review)
     {
+        char c;
+        head = addReview(head, entry);
+        cout << "Enter another review? Y/N: ";
+        cin >> c;
 
+        if (c == "y" || c == "Y")
+            review = false;
     }
 }
 
@@ -77,4 +83,23 @@ Node* addNodeTail(Node *head, double rating, string comment)
     return head;
 }
 
+Node* addReview(Node *head, int entry)
+{
+    int rating;
+    string comment;
+
+    cout << "Enter review rating 0-5: ";
+    cin >> rating;
+
+    cout << "Enter review comments: ";
+    getline(cin, comment);
+
+    if (entry == 1)
+        head = addNodeHead(head, rating, comment);
+    else
+        head = addNodeTail(head, rating, comment);
+
+    return head;
+
+}
 
