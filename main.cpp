@@ -22,6 +22,7 @@ int main()
     int entry;
     bool review = true;
 
+    // gets the method for creating linked list
     cout << "Which linked list method should we use?" << endl;
     cout << setw(61) << "[1] New nodes are added at the head of the linked list" << endl;
     cout << setw(61) << "[2] New nodes are added at the tail of the linked list" << endl;
@@ -37,6 +38,8 @@ int main()
 
         if (c == 'n' || c == 'N')
             review = false;
+        else if(c == 'y' || c == 'Y')
+            continue;
     }
     cout << "Outputting All Reviews: " << endl;
 
@@ -90,7 +93,7 @@ Node* addNodeTail(Node *head, double rating, string comment)
 
 Node* addReview(Node *head, int entry)
 {
-    int rating;
+    double rating;
     string comment;
 
     cout << "Enter review rating 0-5: ";
