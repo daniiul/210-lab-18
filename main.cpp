@@ -34,7 +34,7 @@ int main()
         cout << "Enter another review? Y/N: ";
         cin >> c;
 
-        if (c == "y" || c == "Y")
+        if (c == 'n' || c == 'N')
             review = false;
     }
 }
@@ -47,13 +47,13 @@ Node* addNodeHead(Node *head, double rating, string comment)
         head = newRating;
         newRating->next = nullptr;
         newRating->rating = rating;
-        newRating->comment = comment;
+        newRating->comments = comment;
     }
     else
     {
         newRating->next = head;
         newRating->rating = rating;
-        newRating->comment = comment;
+        newRating->comments = comment;
         head = newRating;
     }
     return head;
@@ -63,13 +63,13 @@ Node* addNodeTail(Node *head, double rating, string comment)
 {
     Node *newRating = new Node;
     Node *temp = new Node;
-    temp = head
+    temp = head;
     if (!head)
     {
         head = newRating;
         newRating->next = nullptr;
         newRating->rating = rating;
-        newRating->comment = comment;
+        newRating->comments = comment;
     }
     else
     {
@@ -77,7 +77,7 @@ Node* addNodeTail(Node *head, double rating, string comment)
             temp = temp->next;
         newRating->next = nullptr;
         newRating->rating = rating;
-        newRating->comment = comment;
+        newRating->comments = comment;
         temp->next = newRating;
     }
     return head;
@@ -91,8 +91,11 @@ Node* addReview(Node *head, int entry)
     cout << "Enter review rating 0-5: ";
     cin >> rating;
 
+    cin.ignore();
+
     cout << "Enter review comments: ";
     getline(cin, comment);
+
 
     if (entry == 1)
         head = addNodeHead(head, rating, comment);
