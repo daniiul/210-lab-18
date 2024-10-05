@@ -1,3 +1,5 @@
+// COMSC-210 | Lab 18 | Daniil Malakhov
+// IDE used: Codeblocks
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -42,11 +44,9 @@ int main()
         else if(c == 'y' || c == 'Y')
             continue;
     }
-    cout << "Outputting All Reviews: " << endl;
 
     //outputs all elements of all nodes in linked list
     output(head);
-
 }
 
 // adds a node to the head of the linked list and populates it with given rating and comment
@@ -121,13 +121,15 @@ Node* addReview(Node *head, int entry)
         head = addNodeTail(head, rating, comment);
 
     return head;
-
 }
 
 // outputs all the reviews and comments per rating in the linked list and prints average of all reviews
-// arguments:
+// arguments: a node object representing the head
+// returns: none
 void output(Node* head)
 {
+    cout << "Outputting All Reviews: " << endl;
+
     if (!head) {
         cout << "No reviews in list" << endl;
         return;
