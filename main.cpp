@@ -13,6 +13,7 @@ struct Node
 Node* addNodeHead(Node *, double, string);
 Node* addNodeTail(Node *, double, string);
 Node* addReview(Node*, int);
+void output(Node*);
 
 int main()
 {
@@ -37,6 +38,10 @@ int main()
         if (c == 'n' || c == 'N')
             review = false;
     }
+    cout << "Outputting All Reviews: " << endl;
+
+    output(head);
+
 }
 
 Node* addNodeHead(Node *head, double rating, string comment)
@@ -96,7 +101,6 @@ Node* addReview(Node *head, int entry)
     cout << "Enter review comments: ";
     getline(cin, comment);
 
-
     if (entry == 1)
         head = addNodeHead(head, rating, comment);
     else
@@ -104,5 +108,25 @@ Node* addReview(Node *head, int entry)
 
     return head;
 
+}
+
+void output(Node* head)
+{
+    if (!head) {
+        cout << "No reviews in list" << endl;
+        return;
+    }
+
+    int count = 1;
+    double sum = 0;
+    Node * current = head;
+
+    while (current) {
+        cout << "      > Review #" << count++ << ": " << current->rating << ": " << current->comments << endl;
+        sum += current->rating;
+        current = current->next;
+    }
+
+    cout << "      > Average: " << sum / (count - 1) << endl;
 }
 
