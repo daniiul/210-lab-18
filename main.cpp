@@ -22,13 +22,14 @@ int main()
     int entry;
     bool review = true;
 
-    // gets the method for creating linked list
+    // makes the user decide whether to end nodes to end or head of linked list
     cout << "Which linked list method should we use?" << endl;
     cout << setw(61) << "[1] New nodes are added at the head of the linked list" << endl;
     cout << setw(61) << "[2] New nodes are added at the tail of the linked list" << endl;
     cout << "       Choice: ";
     cin >> entry;
 
+    //keeps asking for movie specifics such as rating and comments
     while(review)
     {
         char c;
@@ -43,10 +44,14 @@ int main()
     }
     cout << "Outputting All Reviews: " << endl;
 
+    //outputs all elements of all nodes in linked list
     output(head);
 
 }
 
+// adds a node to the head of the linked list and populates it with given rating and comment
+// arguments: Node object representing the head, double variable representing the rating of movie, string variable representing comments on movie
+// returns: A node object representing the head
 Node* addNodeHead(Node *head, double rating, string comment)
 {
     Node *newRating = new Node;
@@ -67,6 +72,9 @@ Node* addNodeHead(Node *head, double rating, string comment)
     return head;
 }
 
+// adds a node to the tail of the linked list and populates it with given rating and comment
+// arguments: Node object representing the head, double variable representing the rating of movie, string variable representing comments on movie
+// returns: A node object representing the head
 Node* addNodeTail(Node *head, double rating, string comment)
 {
     Node *newRating = new Node;
@@ -91,6 +99,9 @@ Node* addNodeTail(Node *head, double rating, string comment)
     return head;
 }
 
+// adds a review to the list by calling the specified add node method, gathers data from user to populate node
+// arguments: a node object representing the head, an integer variable representing the method to use when adding nodes to linked list
+// returns: A node object representing the head
 Node* addReview(Node *head, int entry)
 {
     double rating;
@@ -113,6 +124,8 @@ Node* addReview(Node *head, int entry)
 
 }
 
+// outputs all the reviews and comments per rating in the linked list and prints average of all reviews
+// arguments:
 void output(Node* head)
 {
     if (!head) {
